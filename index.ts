@@ -7,7 +7,7 @@ import cors from 'cors';
 
 
 
-const server = new Server();
+const server = Server.instance;
 
 // configuracion para manejar el body recibido en la peticion rest
 server.app.use( bodyparser.urlencoded( {extended: true} ) );
@@ -19,13 +19,12 @@ server.app.use(cors( { origin: true, credentials: true} ));
 
 
 
-server.app.use( cors );
-
 
 
 // Rutas de servicios
 server.app.use('/', router);
 
+console.log("hola");
 
 server.start( () => {
     console.log(`Servidor corriendo en el puerto ${ server.port }`);
